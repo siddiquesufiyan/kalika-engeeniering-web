@@ -177,6 +177,8 @@ function Footer() {
     <footer
       className={`
         relative
+        mt-6
+        md:mt-10
         w-full
         overflow-hidden
         border-t
@@ -248,29 +250,15 @@ function Footer() {
       group-hover:shadow-md
     "
   >
-    <Image
-      src={assets.logo}
-      alt="Kalika Engineering"
-      width={200}
-      height={70}
-      priority
-      sizes="
-        (max-width: 640px) 150px,
-        (max-width: 1024px) 160px,
-        175px
-      "
-      className="
-        block
-        h-auto
-        w-auto
-        max-h-[50px]
-        max-w-[155px]
-        object-contain
-        transition-transform
-        duration-300
-        group-hover:scale-[1.02]
-      "
-    />
+   <Image
+  src={assets.kalika}
+  alt="Kalika Engineering"
+  width={200}
+  height={70}
+  priority
+  sizes="(max-width: 640px) 150px, (max-width: 1024px) 160px, 175px"
+  className="block h-auto w-auto max-h-[50px] max-w-[155px] object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+/>
   </div>
 </Link>
 
@@ -538,7 +526,7 @@ function Footer() {
             {/* PHONE */}
 
             <a
-              href="tel:+919999999999"
+              href="tel:+91 8709553016"
               className={`
                 group
                 mb-4

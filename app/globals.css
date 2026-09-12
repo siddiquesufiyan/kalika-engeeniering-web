@@ -29,11 +29,14 @@ nav,
 button {
   font-family: var(--font-heading);
 }
-
+a{
+  font-family: var(--font-heading);
+}
 p,
 span,
 li,
 input,
+a,
 textarea,
 select {
   font-family: var(--font-body);

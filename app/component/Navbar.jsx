@@ -1,3 +1,4 @@
+
 "use client";
 
 import { assets } from "@/assets/assets";
@@ -5,12 +6,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+
 import {
   FiChevronDown,
   FiPhone,
   FiMenu,
   FiX,
   FiArrowRight,
+  FiSun,
+  FiMoon,
 } from "react-icons/fi";
 
 import { useTheme } from "./ThemeProvider";
@@ -18,7 +22,6 @@ import { useTheme } from "./ThemeProvider";
 function Navbar() {
   // =========================================================
   // GLOBAL THEME
-  // ThemeProvider is the single source of truth
   // =========================================================
 
   const { isDarkMode, toggleTheme } = useTheme();
@@ -213,8 +216,9 @@ function Navbar() {
     py-2
 
     font-heading
-    text-[14px]
-    lg:text-[15px]
+    text-[13px]
+    lg:text-[14px]
+    xl:text-[15px]
     font-medium
     tracking-[0.01em]
 
@@ -283,6 +287,12 @@ function Navbar() {
           }
         `}
       >
+        {/* =================================================
+            RESPONSIVE NAV CONTAINER
+            Mobile/Tablet = FLEX
+            Desktop = ORIGINAL GRID
+        ================================================== */}
+
         <nav
           className="
             mx-auto
@@ -293,11 +303,17 @@ function Navbar() {
             items-center
             justify-between
 
-            px-4
+            px-3
 
-            sm:h-[72px]
-            sm:px-6
+            sm:h-[68px]
+            sm:px-4
 
+            md:grid
+            md:h-[70px]
+            md:grid-cols-[1fr_auto_1fr]
+            md:px-6
+
+            lg:h-[72px]
             lg:px-8
           "
         >
@@ -305,96 +321,110 @@ function Navbar() {
               LOGO
           ================================================== */}
 
-      <Link
-  href="/"
-  aria-label="Kalika Engineering Home"
-  onClick={closeMenu}
-  className="
-    group
-    flex
-    shrink-0
-    items-center
-    gap-2.5
-  "
->
-  {/* Logo */}
-  <div
-    className={`
-      flex
-      h-10
-      w-[92px]
-      shrink-0
-      items-center
-      justify-center
-      overflow-hidden
-      rounded-md
-      px-1.5
-      transition-all
-      duration-300
-      sm:h-11
-      sm:w-[100px]
-      ${
-        isDarkMode
-          ? "bg-white"
-          : "bg-transparent"
-      }
-    `}
-  >
-    <Image
-      src={assets.logo}
-      alt="Kalika Engineering"
-      width={200}
-      height={70}
-      priority
-      sizes="100px"
-      className="
-        block
-        h-auto
-        w-full
-        max-h-full
-        object-contain
-        transition-transform
-        duration-300
-        group-hover:scale-[1.02]
-      "
-    />
-  </div>
+          <Link
+            href="/"
+            aria-label="Kalika Engineering Home"
+            onClick={closeMenu}
+            className="
+              group
+              flex
+              min-w-0
+              shrink-0
+              items-center
+              gap-1
 
-  {/* Brand Name */}
-  <span className="flex flex-col leading-none">
-    <span
-      className={`
-        font-heading
-        text-[16px]
-        font-extrabold
-        tracking-tight
-        transition-colors
-        duration-300
-        sm:text-[17px]
-        ${
-          isDarkMode
-            ? "text-brand-white"
-            : "text-brand-black"
-        }
-      `}
-    >
-      KALIKA
-    </span>
+              md:justify-self-start
+            "
+          >
+            {/* Logo */}
 
-    <span
-      className="
-        font-heading
-        text-[8px]
-        font-semibold
-        tracking-[0.2em]
-        text-brand-orange
-        sm:text-[9px]
-      "
-    >
-      ENGINEERING
-    </span>
-  </span>
-</Link>
+            <div
+              className={`
+                flex
+                h-9
+                w-[68px]
+                shrink-0
+                items-center
+                justify-center
+                overflow-hidden
+                rounded-md
+                px-0
+
+                transition-all
+                duration-300
+
+                sm:h-10
+                sm:w-[78px]
+
+                ${
+                  isDarkMode
+                    ? "bg-white"
+                    : "bg-transparent"
+                }
+              `}
+            >
+              <Image
+                src={assets.kalika}
+                alt="Kalika Engineering"
+                width={200}
+                height={70}
+                priority
+                sizes="100px"
+                className="
+                  block
+                  h-auto
+                  w-full
+                  max-h-full
+                  object-contain
+                    cursor-pointer
+                  transition-transform
+                  duration-300
+
+                  group-hover:scale-[1.02]
+                "
+              />
+            </div>
+
+            {/* Brand Name */}
+
+            <span className="flex min-w-0 flex-col leading-none">
+              <span
+                className={`
+                  font-heading
+                  text-[15px]
+                  font-extrabold
+                  tracking-tight
+
+                  transition-colors
+                  duration-300
+
+                  sm:text-[16px]
+
+                  ${
+                    isDarkMode
+                      ? "text-brand-white"
+                      : "text-brand-black"
+                  }
+                `}
+              >
+                KALIKA
+              </span>
+
+              <span
+                className="
+                  font-heading
+                  text-[8px]
+                  font-semibold
+                  tracking-[0.2em]
+                  text-brand-orange
+
+                  sm:text-[9px]
+                "
+              >
+                ENGINEERING
+              </span>
+            </span>
+          </Link>
 
           {/* =================================================
               DESKTOP NAVIGATION
@@ -404,12 +434,13 @@ function Navbar() {
             className="
               hidden
               items-center
-              gap-4
+              gap-3
 
               font-heading
 
               md:flex
-              lg:gap-8
+              lg:gap-5
+              xl:gap-7
             "
           >
             {/* HOME + ABOUT */}
@@ -819,15 +850,23 @@ function Navbar() {
 
           {/* =================================================
               RIGHT ACTIONS
+              Mobile = ml-auto
+              Desktop = original grid right
           ================================================== */}
 
           <div
             className="
+              ml-auto
               flex
+              shrink-0
               items-center
+              justify-end
               gap-2
 
-              sm:gap-3
+              sm:gap-2.5
+
+              md:ml-0
+              md:justify-self-end
             "
           >
             {/* =================================================
@@ -847,8 +886,8 @@ function Navbar() {
                 group
                 relative
                 flex
-                h-10
-                w-10
+                h-9
+                w-9
                 shrink-0
                 items-center
                 justify-center
@@ -857,10 +896,8 @@ function Navbar() {
                 rounded-full
                 border
 
-                transition-all
+                transition-colors
                 duration-300
-
-                hover:-translate-y-0.5
 
                 ${
                   isDarkMode
@@ -868,98 +905,40 @@ function Navbar() {
                       border-brand-white/15
                       bg-brand-white
                       text-brand-black
-
-                      hover:bg-brand-orange
-                      hover:text-brand-white
                     `
                     : `
-                      border-brand-black/10
-                      bg-brand-white
-                      text-brand-black
-
-                      hover:border-brand-orange
-                      hover:bg-brand-orange
-                      hover:text-brand-white
+                      border-brand-black
+                      bg-brand-black
+                      text-brand-white
                     `
                 }
+ cursor-pointer
+                sm:h-10
+                sm:w-10
               `}
             >
-              {/* SUN */}
+              <FiSun
+                aria-hidden="true"
+                size={17}
+               
+                strokeWidth={2.2}
+                className={
+                  isDarkMode
+                    ? "block"
+                    : "hidden"
+                }
+              />
 
-              <span
-                className={`
-                  absolute
-                  inset-0
-
-                  transition-all
-                  duration-500
-                  ease-[cubic-bezier(0.22,1,0.36,1)]
-
-                  ${
-                    isDarkMode
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-full opacity-0"
-                  }
-                `}
-              >
-                <Image
-                  src={assets.sun_icon}
-                  alt=""
-                  width={18}
-                  height={18}
-                  className="
-                    absolute
-                    left-1/2
-                    top-1/2
-                    h-[18px]
-                    w-[18px]
-
-                    -translate-x-1/2
-                    -translate-y-1/2
-
-                    object-contain
-                  "
-                />
-              </span>
-
-              {/* MOON */}
-
-              <span
-                className={`
-                  absolute
-                  inset-0
-                  
-                  transition-all
-                  duration-500
-                  ease-[cubic-bezier(0.22,1,0.36,1)]
-
-                  ${
-                    isDarkMode
-                      ? "-translate-y-full opacity-0"
-                      : "translate-y-0 opacity-100"
-                  }
-                `}
-              >
-                <Image
-                  src={assets.moon_icon}
-                  alt=""
-                  width={18}
-                  height={18}
-                  className="
-                    absolute
-                    left-1/2
-                    top-1/2
-
-                    h-[18px]
-                    w-[18px]
-
-                    -translate-x-1/2
-                    -translate-y-1/2
-
-                    object-contain
-                  "
-                />
-              </span>
+              <FiMoon
+                aria-hidden="true"
+                size={17}
+                strokeWidth={2.2}
+                className={
+                  isDarkMode
+                    ? "hidden"
+                    : "block"
+                }
+              />
             </button>
 
             {/* =================================================
@@ -977,7 +956,7 @@ function Navbar() {
 
                 bg-brand-orange
 
-                px-5
+                px-3.5
                 py-2.5
 
                 font-heading
@@ -1018,6 +997,7 @@ function Navbar() {
                 flex
                 h-10
                 w-10
+                shrink-0
                 items-center
                 justify-center
 
@@ -1039,6 +1019,7 @@ function Navbar() {
             >
               <FiMenu
                 size={19}
+                className="cursor-pointer"
                 strokeWidth={2.25}
               />
             </button>
@@ -1131,9 +1112,9 @@ function Navbar() {
 
             border-b
 
-            px-5
+            px-4
 
-            sm:px-6
+            sm:px-5
 
             ${
               isDarkMode
@@ -1149,16 +1130,18 @@ function Navbar() {
             onClick={closeMenu}
             className="
               flex
+              cursor-pointer
               items-center
-              gap-2.5
+              gap-1
             "
           >
             <Image
-              src={assets.logo}
+              src={assets.kalika}
               alt="Kalika Engineering"
               className="
                 h-9
                 w-9
+                rounded-md
                 object-contain
               "
             />
@@ -1196,8 +1179,7 @@ function Navbar() {
 
           {/* Mobile Header Actions */}
 
-          <div className="flex items-center gap-2">
-
+          <div className="flex shrink-0 items-center gap-2">
             {/* Theme */}
 
             <button
@@ -1213,13 +1195,14 @@ function Navbar() {
                 flex
                 h-10
                 w-10
+                shrink-0
                 items-center
                 justify-center
 
                 rounded-full
                 border
 
-                transition-all
+                transition-colors
                 duration-300
 
                 ${
@@ -1229,69 +1212,35 @@ function Navbar() {
                       bg-brand-white
                     `
                     : `
-                      border-brand-black/10
-                      bg-brand-white
+                      border-brand-black
+                      bg-brand-black
                     `
                 }
               `}
             >
-              {/* Sun */}
+              <FiSun
+                aria-hidden="true"
+                size={17}
+                className="cursor-pointer"
+                strokeWidth={2.2}
+                className={
+                  isDarkMode
+                    ? "text-brand-black"
+                    : "hidden"
+                }
+              />
 
-              <span
-                className={`
-                  absolute
-
-                  transition-all
-                  duration-300
-
-                  ${
-                    isDarkMode
-                      ? "rotate-0 scale-100 opacity-100"
-                      : "rotate-90 scale-0 opacity-0"
-                  }
-                `}
-              >
-                <Image
-                  src={assets.sun_icon}
-                  alt=""
-                  width={18}
-                  height={18}
-                  className="
-                    h-[18px]
-                    w-[18px]
-                    object-contain
-                  "
-                />
-              </span>
-
-              {/* Moon */}
-
-              <span
-                className={`
-                  absolute
-
-                  transition-all
-                  duration-300
-
-                  ${
-                    isDarkMode
-                      ? "rotate-90 scale-0 opacity-0"
-                      : "rotate-0 scale-100 opacity-100"
-                  }
-                `}
-              >
-                <Image
-                  src={assets.moon_icon}
-                  alt=""
-                  width={18}
-                  height={18}
-                  className="
-                    h-[18px]
-                    w-[18px]
-                    object-contain
-                  "
-                />
-              </span>
+              <FiMoon
+                aria-hidden="true"
+                className="cursor-pointer"
+                size={17}
+                strokeWidth={2.2}
+                className={
+                  isDarkMode
+                    ? "hidden"
+                    : "text-brand-white"
+                }
+              />
             </button>
 
             {/* Close */}
@@ -1304,6 +1253,7 @@ function Navbar() {
                 flex
                 h-10
                 w-10
+                shrink-0
                 items-center
                 justify-center
 
@@ -1684,7 +1634,7 @@ function Navbar() {
 
                     rounded-full
                     bg-brand-orange
-
+                     cursor-pointer
                     transition-all
                     duration-300
 
@@ -1977,3 +1927,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

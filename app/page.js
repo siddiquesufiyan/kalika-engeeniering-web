@@ -1,10 +1,9 @@
 "use client"
-
+import HomeBanner from "./component/HomeBanner"
 function page() {
   return (
   <>
-<p>hello world here
-</p>
+<HomeBanner/>
   </>
   )
 }
