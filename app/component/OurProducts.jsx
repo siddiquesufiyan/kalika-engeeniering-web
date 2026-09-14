@@ -191,7 +191,7 @@ const { isDarkMode } = useTheme();
 const scrollProducts = (direction) => {
 if (!sliderRef.current) return;
 
-```
+
 const slider = sliderRef.current;
 const card = slider.querySelector("[data-product-card]");
 
@@ -204,7 +204,7 @@ slider.scrollBy({
   left: direction === "next" ? cardWidth : -cardWidth,
   behavior: "smooth",
 });
-```
+
 
 };
 
@@ -214,7 +214,7 @@ className={`         py-16         transition-colors         duration-500       
 >
 <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
 
-```
+
     {/* SECTION HEADER */}
 
     <div className="mb-9 flex flex-col gap-6 sm:mb-11 lg:flex-row lg:items-end lg:justify-between">
