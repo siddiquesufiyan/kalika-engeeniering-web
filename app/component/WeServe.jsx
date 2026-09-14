@@ -11,7 +11,7 @@ id: 1,
 title: "Automotive",
 description:
 "Components for automotive applications, designed for reliability, performance and long-term use.",
-image: "/automotive-industry.jpg",
+image: "/automotive-industry.png",
 href: "/industries/automotive",
 },
 {
@@ -19,7 +19,7 @@ id: 2,
 title: "Electrical",
 description:
 "Precision plastic and rubber components developed for electrical equipment and assemblies.",
-image: "/electrical-industry.jpg",
+image: "/electrical-industry.png",
 href: "/industries/electrical",
 },
 {
@@ -27,7 +27,7 @@ id: 3,
 title: "Agriculture",
 description:
 "Durable components manufactured for tractors, agricultural machinery and farming equipment.",
-image: "/agriculture-industry.jpg",
+image: "/agriculture-industry.png",
 href: "/industries/agriculture",
 },
 {
@@ -35,7 +35,7 @@ id: 4,
 title: "Sanitaryware",
 description:
 "Quality components designed for sanitaryware applications with excellent fit and durability.",
-image: "/sanitaryware-industry.jpg",
+image: "/sanitaryware-industry.png",
 href: "/industries/sanitaryware",
 },
 ];

@@ -269,7 +269,7 @@ className={`         py-16         transition-colors         duration-500       
         "
       >
         <Image
-          src="/manufacturing-process.jpg"
+          src="/manufacturing-process.png"
           alt="Kalika Engineering manufacturing process"
           fill
           sizes="
