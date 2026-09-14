@@ -563,7 +563,7 @@ function Footer() {
               </span>
 
               <span className="min-w-0 break-all text-[13px]">
-                +91 XXXXX XXXXX
+              +91-9873272496
               </span>
             </a>
 
@@ -646,7 +646,7 @@ function Footer() {
               </span>
 
               <span className="min-w-0 text-[13px] leading-5">
-                Gurgaon, Haryana, India
+                Gali No.8, Lane 3B, Kadipur Industrial Area, Gurgaon, Haryana - 122001
               </span>
             </div>
 
